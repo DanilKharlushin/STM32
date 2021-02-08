@@ -133,7 +133,6 @@ int main(void)
   MX_TIM5_Init();
   /* USER CODE BEGIN 2 */
 
-  //HAL_TIM_Base_Start_IT(&htim9);
 
 
   HAL_TIM_IC_Start_IT(&htim1, TIM_CHANNEL_1);
