@@ -88,8 +88,6 @@ int flag = 0;
 int flag2 = 0;
 HAL_TIM_ActiveChannel signalOrder[4];
 uint16_t channelOrder[4];
-int measurement[102];
-uint16_t i = 0;
 
 /* USER CODE END 0 */
 
@@ -146,10 +144,6 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim4);
   DWT_Delay_us(100);
   HAL_TIM_Base_Start_IT(&htim5);
-
-  //DWT_Delay_us(30000);
-
-
 
 
   /* USER CODE END 2 */
@@ -739,22 +733,16 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {
 			}
 			else if ((htim->Channel == signalOrder[1]) && (flag2 == 1)) {
 				firstPhaseShift = HAL_TIM_ReadCapturedValue(&htim1, channelOrder[1]);
-				//measurement[i] = firstPhaseShift;
-				i++;
 				flag2 = 0;
 				flag = 0;
 				delay = 0;
 			}
 			else if ((htim->Channel == signalOrder[2]) && (flag2 == 2)) {
 				secondPhaseShift = HAL_TIM_ReadCapturedValue(&htim1, channelOrder[2]);
-				//measurement[i] = secondPhaseShift;
-				//i++;
 				flag2 = 3;
 			}
 			else if ((htim->Channel == signalOrder[3]) && (flag2 == 3)) {
 				thirdPhaseShift = HAL_TIM_ReadCapturedValue(&htim1, channelOrder[3]);
-				//measurement[i] = thirdPhaseShift;
-				//i++;
 				flag2 = 0;
 				flag = 0;
 				delay = 0;
@@ -763,61 +751,6 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) {
 
 	}
 
-
-
-
-	/*if (htim->Instance == TIM1) {
-		if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_1) {
-			__HAL_TIM_SET_COUNTER(&htim1, 0);
-		}
-
-		else if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_2) {
-			delay1 = HAL_TIM_ReadCapturedValue(&htim1, TIM_CHANNEL_2);
-			delay = 0;
-		}
-
-		else if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_3) {
-			delay2 = HAL_TIM_ReadCapturedValue(&htim1, TIM_CHANNEL_3);
-			delay = 0;
-		}
-
-		else if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_4) {
-			delay3 = HAL_TIM_ReadCapturedValue(&htim1, TIM_CHANNEL_4);
-			delay = 0;
-		}
-
-	}*/
-
-	/*if (htim->Instance == TIM1) {
-
-		if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_1) {
-			flag++;
-			if (flag > 1) {
-
-				HAL_TIM_IC_Stop_IT(&htim1, TIM_CHANNEL_1);
-				HAL_TIM_IC_Stop_IT(&htim1, TIM_CHANNEL_2);
-				HAL_TIM_IC_Stop_IT(&htim1, TIM_CHANNEL_3);
-				HAL_TIM_IC_Stop_IT(&htim1, TIM_CHANNEL_4);
-				HAL_TIM_Base_Stop(&htim1);
-				TIM1->CNT = 0;
-
-				delay = HAL_TIM_ReadCapturedValue(&htim1, TIM_CHANNEL_1);
-				delay1 = HAL_TIM_ReadCapturedValue(&htim1, TIM_CHANNEL_2);
-				delay2 = HAL_TIM_ReadCapturedValue(&htim1, TIM_CHANNEL_3);
-				delay3 = HAL_TIM_ReadCapturedValue(&htim1, TIM_CHANNEL_4);
-
-				HAL_TIM_Base_Start(&htim1);
-				HAL_TIM_IC_Start_IT(&htim1, TIM_CHANNEL_1);
-				HAL_TIM_IC_Start_IT(&htim1, TIM_CHANNEL_2);
-				HAL_TIM_IC_Start_IT(&htim1, TIM_CHANNEL_3);
-				HAL_TIM_IC_Start_IT(&htim1, TIM_CHANNEL_4);
-				flag = 0;
-				delay = 0;
-
-			}
-
-		}
-	}*/
 }
 
 
