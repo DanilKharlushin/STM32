@@ -139,13 +139,13 @@ int main(void)
   HAL_TIM_IC_Start_IT(&htim1, TIM_CHANNEL_2);
   //HAL_TIM_IC_Start_IT(&htim1, TIM_CHANNEL_3);
   //HAL_TIM_IC_Start_IT(&htim1, TIM_CHANNEL_4);
-  HAL_TIM_Base_Start_IT(&htim2);
+  /*HAL_TIM_Base_Start_IT(&htim2);
   DWT_Delay_us(200);
   HAL_TIM_Base_Start_IT(&htim3);
   DWT_Delay_us(100);
   HAL_TIM_Base_Start_IT(&htim4);
   DWT_Delay_us(100);
-  HAL_TIM_Base_Start_IT(&htim5);
+  HAL_TIM_Base_Start_IT(&htim5);*/
 
 
 
