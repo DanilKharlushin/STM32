@@ -148,7 +148,7 @@ int main(void)
   DWT_Delay_us(100);
   HAL_TIM_Base_Start_IT(&htim5);
 
-  //DWT_Delay_us(30000);
+
 
 
   //HAL_TIM_IC_Start_IT(&htim1, TIM_CHANNEL_3);
