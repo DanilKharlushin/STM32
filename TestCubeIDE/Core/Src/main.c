@@ -89,6 +89,7 @@ int flag2 = 0;
 HAL_TIM_ActiveChannel signalOrder[4];
 uint16_t channelOrder[4];
 int var = 0;
+int var2 = 0;
 
 
 /* USER CODE END 0 */
